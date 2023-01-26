@@ -16,38 +16,21 @@
     </form>
 
 
+    <?php
 
+        include_once __DIR__ . "/function.php";
+
+    ?>
 
 
 
     <?php
 
-
-        function getRandomPass($lunghezzaPass){
-            $i = 0;
-            $password = "";
-
-            while($i < $lunghezzaPass){
-
-                $password .= chr(97 + mt_rand(0, 25));
-                $password .= chr(65 + mt_rand(0, 25));
-                $password .= mt_rand(0, 9);
-                $password .= chr(33 + mt_rand(0, 14));
-                
-
-
-                
-                $i = $i + 4;
-            }
-                
-            return $password;
-        }
-
         if(isset($_GET["lunghezza"])){
-            if($_GET["lunghezza"] >= 4){
+            if($_GET["lunghezza"] >= 8){
                 echo "password: " . getRandomPass($_GET["lunghezza"]);
             }else{
-                echo "la password deve contenere aleno 4 caratteri";
+                echo "la password deve contenere aleno 8 caratteri";
             }
         }
     ?>
