@@ -20,6 +20,8 @@
 
         include_once __DIR__ . "/function.php";
 
+        session_start();
+
     ?>
 
 
@@ -28,7 +30,9 @@
 
         if(isset($_GET["lunghezza"])){
             if($_GET["lunghezza"] >= 8){
-                echo "password: " . getRandomPass($_GET["lunghezza"]);
+                // echo "password: " . getRandomPass($_GET["lunghezza"]);
+                $_SESSION['password'] = getRandomPass($_GET["lunghezza"]);
+                header("location: ./login.php");
             }else{
                 echo "la password deve contenere aleno 8 caratteri";
             }
